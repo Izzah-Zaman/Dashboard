@@ -1,0 +1,260 @@
+<html>
+
+<head>
+<style>
+.button {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #018dc4;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 16px/normal "acme", Helvetica, sans-serif;
+  color: rgba(254,255,229,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #7609e2;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  text-shadow: -1px -1px 0 rgba(199,212,234,0.66) ;
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+.digits {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 16px/1 "arimo", Helvetica, sans-serif;
+  color: rgb(118, 9, 226);
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.25) ;
+}
+.days {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #018dc4;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 15px/normal "abel", Helvetica, sans-serif;
+  color: #7609e2;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #ecf0f1;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  //text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.heading {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 30px/1 "advent-pro", Helvetica, sans-serif;
+  color: rgb(118, 9, 226);
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.25) ;
+}
+</style>
+
+<script  src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        // these are human-readable month name labels, in order
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		var calendar = new Array([],[],[],[],[],[]);
+        //var calendar = [6][7];
+		var sub =0;
+		var month =0;
+		var year=0;
+		var yearSub=0;
+        //var startingDay =       //Day of month
+		
+        function makeCalendar() {
+			console.log("In makeCalendar again");
+			var date = new Date();
+        var firstDay = new Date(date.getFullYear(), date.getMonth() - sub, 1); //first day of month
+        var day = firstDay.getDay();
+        year=date.getFullYear()-yearSub;
+		month = date.getMonth() -(sub%12);
+			console.log(month);
+			//var firstOfMonth = new Date(date.getFullYear(),date.getMonth(),1);
+			
+			
+			//console.log(date.getDate());
+			//console.log(date.getDay());
+			//var firstOfMonth = firstOfMonth.getDay();
+						
+			
+			
+           
+            var numOfDays = daysInMonth[month];
+            //calendar[6][7]={0};
+            var traverseDay = 0;
+            //while (traverseDay < day){
+            var week = 0;
+
+            //}
+			 for (var i = 0; i < 6; i++) {
+                //console.log(calendar[i]);
+                for (var j = 0; j < 7; j++){
+
+                 calendar[i][j]="";
+
+                }
+
+            }
+
+        
+			//console.log(numOfDays);
+            for (var i = 0; i < numOfDays; i++) {
+			//	console.log(day);
+                calendar[week][day] = i + 1;
+                day++;
+                if (day == 7) {
+                    day = 0;
+                    week++;
+                }
+            }
+			var x = "";
+            for (var i = 0; i < 6; i++) {
+                console.log(calendar[i]);
+                for (var j = 0; j < 7; j++){
+				//	console.log(calendar[i][j]);				
+					x = x + "" + calendar[i][j]; 
+                //  document.getElementById("print").innerHTML = x;
+
+                }
+
+            }
+
+        }
+		
+
+		// onclick="makeCalendar()"
+// class="heading"  ng-controller="monthName" <h1> month </h1>
+		</script>
+
+		</head>
+
+<body style="background-color:#e7e3e4" >
+    <div id="print" ng-app="myApp">
+        <p class="heading"  ng-controller="monthName"> {{ month}} {{year}} </h1>
+		<button type="button" class="button" ng-controller="PrevCalendar" ng-click="prevMonth()">Previous</button>
+		<button type="button" class="button" ng-controller="NextCalendar" ng-click="nextMonth()">Next</button>
+		<div  ng-controller="MainCtrl">
+		<a href="calendar.html" title="Calendar" target="_blank" style="text-decoration:none">
+		<table>
+		
+
+		<tr >
+		<td ng-repeat="x in days" class="days"> {{x}}</td>
+		</tr>
+		<tr ng-repeat="weeks in calendar"> {{weeks}}
+		<td ng-repeat="day in weeks track by $index" class="digits" style="text-align:center;">{{ day }}</td>
+		</tr
+		</table>
+		</a>
+		</tr>
+	
+<script>
+	var app = angular.module('myApp', []);
+		
+		//app.config();
+		  app.controller('MainCtrl', function($scope,$window) {
+		//$scope.variable1 = [];
+		makeCalendar();
+		$scope.calendar = calendar;
+		$scope.days = days;
+		
+		
+		//$scope.calendar = calendar;
+		//$scope.calendar = $window.calendar;
+});
+ app.controller('PrevCalendar', function($scope,$window) {
+
+		$scope.prevMonth = function(){
+		sub++;
+		
+		if(sub%12==0){
+			yearSub++;
+			
+		}
+		
+		
+		console.log("I am in prevMonth");
+		makeCalendar();
+		$scope.month = months[month];
+		$scope.updateMonth();
+		
+		}
+		
+		$scope.calendar = calendar;
+		$scope.days = days;
+});
+
+ app.controller('NextCalendar', function($scope,$window) {
+
+		$scope.nextMonth = function(){
+			sub--;
+		if(sub%12==0){
+			yearSub--;
+			
+		}
+
+	
+
+		
+		makeCalendar();
+		$scope.month = months[month];
+		$scope.updateMonth();
+		}
+		
+		$scope.calendar = calendar;
+		$scope.days = days;
+});
+ app.controller('monthName', function($scope,$window) {
+		//$scope.variable1 = [];
+		makeCalendar();
+		
+		$scope.month = months[month];
+		$scope.year = year;
+		
+		$scope.updateMonth = function(){
+	
+		$scope.month = months[month];
+		$scope.year = year;
+		}
+		//$scope.days = days;
+		
+		
+		//$scope.calendar = calendar;
+		//$scope.calendar = $window.calendar;
+});
+		
+</script>
+	
+
+</body>
+
+
+
+</html>
